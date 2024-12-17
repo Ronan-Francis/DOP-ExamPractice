@@ -1,0 +1,17 @@
+package ie.atu.sw;
+
+import java.util.List;
+
+public record Member(String id, String fullName, String email, List<Loan> loans) {
+	public Member{
+		if(loans.size() > 5) {
+			throw new IllegalArgumentException("A Member cannot borrow more than 5 books simultaneously");
+		}
+	}
+	
+	@Override
+	public String toString() {
+	    return "Member{id='%s', fullName='%s', email='%s'}".formatted(id, fullName, email);
+	}
+
+}

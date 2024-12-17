@@ -1,0 +1,21 @@
+package ie.atu.sw;
+
+import java.time.LocalDate;
+
+public class Runner {
+
+	public static void main(String[] args) {
+        var book1 = new Book("B001", "1984", "George Orwell", Genre.FICTION, true);
+        var book2 = new Book("B002", "Dune", "Frank Herbert", Genre.FANTASY, true);
+        var member = new Member("M001", "John Doe", "john.doe@example.com", List.of());
+
+        var loan1 = LibraryService.loanBook(member, book1, LocalDate.of(2024, 12, 10));
+        System.out.println(loan1);
+
+        LibraryService.returnBook(member, book1);
+        var loans = LibraryService.listLoans(member);
+        System.out.println(loans);
+
+	}
+
+}

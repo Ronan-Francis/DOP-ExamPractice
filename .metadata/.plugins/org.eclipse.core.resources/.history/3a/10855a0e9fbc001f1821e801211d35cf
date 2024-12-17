@@ -1,0 +1,9 @@
+package ie.atu.sw;
+
+import java.util.List;
+
+public record Member(String id, String fullName, String email, List<Object> loans) {
+
+
+
+}

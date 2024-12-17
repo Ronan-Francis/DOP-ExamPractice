@@ -1,0 +1,12 @@
+package ie.atu.sw;
+
+import java.time.LocalDate;
+
+public class LibraryService {
+
+	public static Object loanBook(Member member, Book book1, LocalDate of) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,25 @@
+package ie.atu.sw;
+
+import java.time.LocalDate;
+
+public class LibraryService {
+
+	public static Loan loanBook(Member member, Book book, LocalDate loanDate) {
+		 if(!book.isAvailable()) {
+			 throw new IllegalArgumentException("A Loan must reference a Member.");
+		 }
+		 var loan = new Loan(member, book, loanDate);
+		 member.loans().add(book);
+		 return loan;
+	}
+
+	public static void returnBook(Member member, Book book1) {
+		member.loans().remove(book1);
+		
+	}
+
+	public static Object[] listLoans(Member member) {
+		return member.loans().toArray();
+	}
+
+}

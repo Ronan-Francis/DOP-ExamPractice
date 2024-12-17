@@ -1,0 +1,37 @@
+package ie.atu.sw;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public class LibraryService {
+
+	public static Loan loanBook(Member member, Book book, LocalDate loanDate) {
+	    if (!book.isAvailable()) {
+	        throw new IllegalArgumentException("The book is already on loan.");
+	    }
+	    if (member.loans().size() >= 5) {
+	        throw new IllegalArgumentException("Member cannot borrow more than 5 books.");
+	    }
+
+	    // Create and store the loan
+	    Loan loan = new Loan(member, book.loanOut(), loanDate);
+	    member.loans().add(loan);  // Correctly add the Loan object
+	    return loan;
+	}
+
+	public static void returnBook(Member member, Book book) {
+	    Loan loanToRemove = member.loans().stream()
+	        .filter(loan -> loan.book().equals(book))
+	        .findFirst()
+	        .orElseThrow(() -> new IllegalArgumentException("Loan not found."));
+
+	    member.loans().remove(loanToRemove); 
+	    System.out.println("Book returned: " + book.title());
+	}
+
+
+	public static List<Loan> listLoans(Member member) {
+		return member.loans();
+	}
+
+}

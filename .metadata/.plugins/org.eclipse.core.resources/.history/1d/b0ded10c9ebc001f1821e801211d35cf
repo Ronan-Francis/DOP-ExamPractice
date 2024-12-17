@@ -1,0 +1,7 @@
+package ie.atu.sw;
+
+public record Book(String id, String title, String author, Genre genre, boolean b) {
+	
+	
+
+}

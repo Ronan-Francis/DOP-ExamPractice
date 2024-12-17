@@ -1,0 +1,9 @@
+package ie.atu.sw;
+
+public record Book() {
+
+	public Book(String string, String string2, String string3, Genre fiction, boolean b) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

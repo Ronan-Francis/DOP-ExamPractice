@@ -1,0 +1,23 @@
+package ie.atu.sw;
+
+import java.time.LocalDate;
+import java.util.Collection;
+
+public class LibraryService {
+
+	public static Loan loanBook(Member member, Book book, LocalDate loanDate) {
+		 var l = new Loan(member, book, loanDate);
+		return l;
+	}
+
+	public static void returnBook(Member member, Book book1) {
+		member.loans();
+		
+	}
+
+	public static Collection<Loan> listLoans(Member member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

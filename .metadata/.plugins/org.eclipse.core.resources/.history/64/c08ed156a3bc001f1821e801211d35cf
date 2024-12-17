@@ -1,0 +1,20 @@
+package ie.atu.sw;
+
+import java.time.LocalDate;
+
+public record Loan(Member member, Book book, LocalDate loanDate) {
+	public Loan{
+		if (member == null) {
+	        throw new IllegalArgumentException("A Loan must reference a Member.");
+	    }
+		if (book == null) {
+	        throw new IllegalArgumentException("A Loan must reference a Book.");
+	    }
+	}
+	
+	@Override
+	public String toString() {
+	    return "Loan{Book='%s', Member='%s', LoanDate='%s'}"
+	        .formatted(book.title(), member.fullName(), loanDate);
+	}
+}
